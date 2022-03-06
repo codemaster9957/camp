@@ -5,7 +5,7 @@ namespace SpriteKind {
     export const wall = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
-    statusbar.value += -10
+	
 })
 scene.onHitWall(SpriteKind.Player, function (sprite, location) {
     statusbar = statusbars.create(20, 4, StatusBarKind.Health)
@@ -120,6 +120,9 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
     500,
     true
     )
+    music.bigCrash.play()
+    tiles.loadMap(tiles.createMap(tilemap`level2`))
+    statusbar.destroy(effects.disintegrate, 2000)
 })
 controller.combos.attachCombo("A+L", function () {
     controller.moveSprite(mySprite2, 0, 0)
